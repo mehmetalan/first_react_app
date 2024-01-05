@@ -1,6 +1,8 @@
 import axios from "axios";
 import React from "react";
 import { Table }  from 'react-bootstrap'; 
+import Button from 'react-bootstrap/Button';
+import { Link, Route, Routes } from 'react-router-dom';
 import '../index.css';
 
 const baseURL = "https://jsonplaceholder.typicode.com/posts";
@@ -21,7 +23,7 @@ export function PostList() {
         });
     }, []);
 
-    if (!posts) return null;
+    if (!posts) return <></>;
 
     return (
         <div className="allPosts">
@@ -34,19 +36,24 @@ export function PostList() {
                         <th>Action</th> 
                     </tr> 
                 </thead>
+                <tbody>
           {posts.map((post) => {
              return (
                 <>
-                <tbody>
                    <tr>
                     <th>{post.title}</th>
                     <th>{post.body}</th>
+                    <Link to={'post/' + post.id}>
+                      <Button bsStyle="primary">Detay</Button>
+                    </Link>
+                    
                    </tr>
-                </tbody>
                 </>
              );
           })}
+          </tbody>
           </Table> 
+          <Button>AA</Button>
         </div>
       );
 }
