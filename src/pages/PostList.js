@@ -43,10 +43,9 @@ export function PostList() {
                    <tr>
                     <th>{post.title}</th>
                     <th>{post.body}</th>
-                    <Link to={'post/' + post.id}>
-                      <Button bsStyle="primary">Detay</Button>
+                    <Link to={'/post/' + post.id}>
+                      <Button bsStyle="primary">Detail</Button>
                     </Link>
-                    
                    </tr>
                 </>
              );

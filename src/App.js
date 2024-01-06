@@ -37,7 +37,7 @@ function App() {
     </Navbar>
     <Routes>
     <Route path='/postlist' element={<PostList />}></Route>
-    <Route path='/postlist/:id' element={<Post/>}></Route>
+    <Route path='/post/:id' element={<Post/>}></Route>
     <Route path='/contact' element={<Contact/>}></Route>
   </Routes></>
   );
