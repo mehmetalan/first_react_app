@@ -8,7 +8,6 @@ import "../index.css";
 const baseURL = "https://jsonplaceholder.typicode.com/posts";
 
 export function PostList() {
-  let listItems;
   const [posts, setPost] = React.useState(null);
 
   React.useEffect(() => {
@@ -21,7 +20,23 @@ export function PostList() {
 
   return (
     <div className="allPosts">
-      <h2 className="tableheader">All Posts</h2>
+      <div className="row" style={{ display: "flex" }}>
+        <div
+          className="col-6"
+          style={{ display: "flex", alignItems: "center" }}
+        >
+          <h2 className="tableheader">All Posts</h2>
+        </div>
+        <div
+          className="col-6"
+          style={{ display: "flex", justifyContent: "flex-end" }}
+        >
+          <Link to={"/addpost"}>
+            <Button style={{ marginRight: "1em" }}>New Post</Button>
+          </Link>
+        </div>
+      </div>
+
       <Table striped bordered hover className="custom-table">
         <thead>
           <tr>
