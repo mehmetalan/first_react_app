@@ -50,11 +50,13 @@ export function PostList() {
             return (
               <>
                 <tr>
-                  <th>{post.title}</th>
-                  <th>{post.body}</th>
-                  <Link to={"/post/" + post.id}>
-                    <Button bsStyle="primary">Detail</Button>
-                  </Link>
+                  <td className="align-middle">{post.title}</td>
+                  <td className="align-middle">{post.body}</td>
+                  <td className="align-middle text-center">
+                    <Link to={"/post/" + post.id}>
+                      <Button bsStyle="primary">Detail</Button>
+                    </Link>
+                  </td>
                 </tr>
               </>
             );
