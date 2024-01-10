@@ -1,6 +1,9 @@
 import { useParams } from "react-router-dom";
 import axios from "axios";
 import React from "react";
+import Button from "react-bootstrap/Button";
+import "../index.css";
+import { Link, Route, Routes } from "react-router-dom";
 
 const baseURL = "https://jsonplaceholder.typicode.com/posts/";
 
@@ -19,16 +22,29 @@ export function Post() {
 
   return (
     <div>
-      <div className="row justify-content-center">
-        <div className="col-6 text-center">
+      <div className="row">
+        <div className="col-6 text-center d-flex justify-content-start">
           <span
-            className="square bg-primary rounded-pill"
-            style={{ width: "250px", display: "inline-block" }}
+            className="square bg-primary rounded-pill d-flex align-items-center justify-content-center"
+            style={{ width: "150px", height: "50px", display: "inline-flex" }}
+          >
+            <Link to={"/postlist"}>
+              <Button>Back</Button>
+            </Link>
+          </span>
+        </div>
+      </div>
+      <div className="row">
+        <div className="col-12 text-center d-flex align-items-center justify-content-center">
+          <span
+            className="square bg-primary rounded-pill d-flex align-items-center justify-content-center"
+            style={{ width: "200px", height: "50px" }}
           >
             <h1>Post {id}</h1>
           </span>
         </div>
       </div>
+      <br></br>
       <div className="row">
         <span className="square border border-dark">
           <div className="col-12">
