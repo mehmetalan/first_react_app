@@ -6,42 +6,45 @@ import Form from "react-bootstrap/Form";
 const baseURL = "https://jsonplaceholder.typicode.com/posts";
 
 export default function AddPost() {
-  const [post, setPost] = useState({});
-  const [titleInput, setTitleInput] = useState("");
-  const [bodyInput, setBodyInput] = useState("");
+  const [post, setPost] = useState({
+    title: "",
+    body: "",
+  });
+  const [showPostAdded, setShowPostAdded] = useState(false);
 
   function createPost() {
     axios
       .post(baseURL, {
-        title: titleInput,
-        body: bodyInput,
+        title: post.title,
+        body: post.body,
       })
       .then((response) => {
-        setPost(response.data);
-        setTitleInput("");
-        setBodyInput("");
+        setPost({
+          title: "",
+          body: "",
+        });
+        setShowPostAdded(true);
       });
   }
 
-  const showPost = post.title && post.body;
+  const clearMessage = () => {
+    setShowPostAdded(false);
+  };
 
   return (
     <div style={{ textAlign: "center" }}>
-      {showPost ? (
-        <>
-          <h1>{post.title}</h1>
-          <p>{post.body}</p>
-        </>
-      ) : (
-        <h3>New Post</h3>
-      )}
+      <h3>New Post</h3>
+
       <div className="row text-center">
         <div className="col-md-6 mx-auto">
           <label>Title: </label>
           <Form.Control
             type="text"
-            value={titleInput}
-            onChange={(e) => setTitleInput(e.target.value)}
+            value={post.title}
+            onChange={(e) => {
+              setPost({ ...post, title: e.target.value });
+              clearMessage();
+            }}
             placeholder="Title"
           />
         </div>
@@ -51,14 +54,18 @@ export default function AddPost() {
           <label>Body: </label>
           <Form.Control
             type="text"
-            value={bodyInput}
-            onChange={(e) => setBodyInput(e.target.value)}
+            value={post.body}
+            onChange={(e) => {
+              setPost({ ...post, body: e.target.value });
+              clearMessage();
+            }}
             placeholder="Body"
           />
         </div>
       </div>
-      <br></br>
+      <br />
       <Button onClick={createPost}>Create Post</Button>
+      <div>{showPostAdded && <span>New Post Added.</span>}</div>
     </div>
   );
 }
