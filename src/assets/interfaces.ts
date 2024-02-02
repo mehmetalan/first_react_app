@@ -26,14 +26,3 @@ export interface postType {
   title: string;
   body: string;
 }
-
-export interface CommentsListProps {
-  comments: commentType[];
-}
-
-export interface commentType {
-  id: number;
-  email: string;
-  name: string;
-  body: string;
-}
